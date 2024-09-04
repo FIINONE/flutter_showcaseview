@@ -252,6 +252,10 @@ class Showcase extends StatefulWidget {
   /// Defaults to 7.
   final double toolTipSlideEndDistance;
 
+  final double tooltipScreenEdgePadding;
+  final double tooltipTextPadding;
+  
+
   const Showcase({
     required this.key,
     required this.description,
@@ -298,6 +302,8 @@ class Showcase extends StatefulWidget {
     this.onBarrierClick,
     this.disableBarrierInteraction = false,
     this.toolTipSlideEndDistance = 7,
+    this.tooltipScreenEdgePadding = 20.0,
+    this.tooltipTextPadding = 15.0,
   })  : height = null,
         width = null,
         container = null,
@@ -632,6 +638,8 @@ class _ShowcaseState extends State<Showcase> {
             titleTextDirection: widget.titleTextDirection,
             descriptionTextDirection: widget.descriptionTextDirection,
             toolTipSlideEndDistance: widget.toolTipSlideEndDistance,
+            tooltipScreenEdgePadding: widget.tooltipScreenEdgePadding,
+            tooltipTextPadding: widget.tooltipTextPadding,
           ),
         ],
       ],
