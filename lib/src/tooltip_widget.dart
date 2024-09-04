@@ -63,6 +63,8 @@ class ToolTipWidget extends StatefulWidget {
   final TextDirection? titleTextDirection;
   final TextDirection? descriptionTextDirection;
   final double toolTipSlideEndDistance;
+  final double tooltipScreenEdgePadding;
+  final double tooltipTextPadding;
 
   const ToolTipWidget({
     super.key,
@@ -97,6 +99,8 @@ class ToolTipWidget extends StatefulWidget {
     this.titleTextDirection,
     this.descriptionTextDirection,
     this.toolTipSlideEndDistance = 7,
+    this.tooltipScreenEdgePadding = 20.0,
+    this.tooltipTextPadding = 15.0,
   });
 
   @override
@@ -115,8 +119,6 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
   late final Animation<double> _scaleAnimation;
 
   double tooltipWidth = 0;
-  double tooltipScreenEdgePadding = 20;
-  double tooltipTextPadding = 15;
 
   TooltipPosition findPositionForContent(Offset position) {
     var height = 120.0;
@@ -169,10 +171,10 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
             (widget.descriptionPadding?.right ?? 0) +
             (widget.descriptionPadding?.left ?? 0));
     var maxTextWidth = max(titleLength, descriptionLength);
-    if (maxTextWidth > widget.screenSize.width - tooltipScreenEdgePadding) {
-      tooltipWidth = widget.screenSize.width - tooltipScreenEdgePadding;
+    if (maxTextWidth > widget.screenSize.width - widget.tooltipScreenEdgePadding) {
+      tooltipWidth = widget.screenSize.width - widget.tooltipScreenEdgePadding;
     } else {
-      tooltipWidth = maxTextWidth + tooltipTextPadding;
+      tooltipWidth = maxTextWidth + widget.tooltipTextPadding;
     }
   }
 
